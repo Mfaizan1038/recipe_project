@@ -54,6 +54,5 @@ def delete_recipe(request,id):
 
         
 
-   ueryset':queryset
+  
 
-    })
