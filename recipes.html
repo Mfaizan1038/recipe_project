@@ -1,0 +1,50 @@
+<div class="container mt-5">
+    <form class="col-6 mx-auto" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="exampleInputEmail1">Recipe name</label>
+          <input name="name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter recipe name">
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputPassword1">Recipe Description</label>
+          <textarea name="description" class="form-control"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Image</label>
+            <input name="image" type="file" class="form-control" id="exampleInputEmail1">
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <table class="table mt-5">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Image</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for receipe in recipe %}
+          <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ receipe.name }}</td>
+            <td>{{ receipe.description }}</td>
+            <td>
+              <img src="{{ receipe.image.url }}" height="100"/></td>
+              <td>
+                <a href="/recipe-delete/{{receipe.id}}/" class="btn btn-danger">delete</a>
+                <a href="/recipe-update/{{receipe.id}}/" class="btn btn-success">update</a>
+              
+            
+              </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+</div>

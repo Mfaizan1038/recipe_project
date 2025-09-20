@@ -1,0 +1,22 @@
+<div class="container mt-5">
+    <form class="col-6 mx-auto" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="exampleInputEmail1">Recipe name</label>
+          <input name="name" type="text" value="{{receipe.name}}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter recipe name">{{receipe.name}}
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputPassword1">Recipe Description</label>
+          <textarea name="description" value="" class="form-control">{{receipe.description}}</textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Image</label>
+            <input name="image" type="file" value="{{receipe.image}}" class="form-control" id="exampleInputEmail1">{{receipe.image}}
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</div>
